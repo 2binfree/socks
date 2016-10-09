@@ -26,14 +26,12 @@ $(function() {
                 $(this).addClass("border-fixe");
             }
         }
+        $("#vote-number").text(totalVote)
+        enableVote();
+    });
 
-        $("#vote-number").text(totalVote);
-
-        if (totalVote == 3) {
-            $("#go-vote").prop("disabled", false);
-        } else {
-            $("#go-vote").prop("disabled", true);
-        }
+    $("input[name='name']").keypress(function(){
+        enableVote();
     });
 
     $("#go-vote").click(function(){
@@ -57,4 +55,14 @@ $(function() {
             alert( "Data Saved: " + msg );
         });
     });
+
+    function enableVote(){
+
+        var name = $("input[name='name']").val();
+        if (totalVote == 3 && name.length > 0) {
+            $("#go-vote").prop("disabled", false);
+        } else {
+            $("#go-vote").prop("disabled", true);
+        }
+    }
 });
