@@ -1,0 +1,7 @@
+sock_sock:
+    resource: "@sockBundle/Resources/config/routing/sock.yml"
+    prefix:   /sock
+
+sock_homepage:
+    path:     /
+    defaults: { _controller: sockBundle:Default:index }

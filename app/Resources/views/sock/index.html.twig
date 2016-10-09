@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1>Liste</h1>
+        <div class="row">
+            <div class="col-md-1">Id</div>
+            <div class="col-md-2">Name</div>
+            <div class="col-md-5">Picture</div>
+            <div class="col-md-1">Vote1</div>
+            <div class="col-md-1">Vote2</div>
+            <div class="col-md-1">Vote3</div>
+            <div class="col-md-1">Actions</div>
+        </div>
+        {% for sock in socks %}
+            <div class="row">
+                <div class="col-md-1">
+                    <a href="{{ path('sock_show', { 'id': sock.id }) }}">{{ sock.id }}</a>
+                </div>
+                <div class="col-md-2">{{ sock.name }}</div>
+                <div class="col-md-5">{{ sock.picture }}</div>
+                <div class="col-md-1">{{ sock.vote1 }}</div>
+                <div class="col-md-1">{{ sock.vote2 }}</div>
+                <div class="col-md-1">{{ sock.vote3 }}</div>
+                <div class="col-md-1">
+                    <ul>
+                        <li>
+                            <a href="{{ path('sock_show', { 'id': sock.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('sock_edit', { 'id': sock.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                    {% if page > 1 %}
+                        <a href="{{ path('sock_index', {'page': page - 1}) }}">
+                            <button type="button" class="btn btn-default"><</button>
+                        </a>
+                    {% endif %}
+                    {% if page > 1 %}
+                        <a href="{{ path('sock_index', {'page': 1}) }}">
+                            <button type="button" class="btn btn-default"><<</button>
+                        </a>
+                    {% endif %}
+                    {% if page < maxPage %}
+                        <a href="{{ path('sock_index', {'page': maxPage }) }}">
+                            <button type="button" class="btn btn-default">>></button>
+                        </a>
+                    {% endif %}
+                    {% if page < maxPage %}
+                        <a href="{{ path('sock_index', {'page': page + 1}) }}">
+                            <button type="button" class="btn btn-default">></button>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+        <ul>
+            <li>
+                <a href="{{ path('sock_new') }}">Create a new entry</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

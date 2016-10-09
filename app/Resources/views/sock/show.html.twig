@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sock</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sock.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ sock.name }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>
+                    <img src="{{ upload_directory }}/{{ sock.picture }}" />
+                </td>
+            </tr>
+            <tr>
+                <th>Vote1</th>
+                <td>{{ sock.vote1 }}</td>
+            </tr>
+            <tr>
+                <th>Vote2</th>
+                <td>{{ sock.vote2 }}</td>
+            </tr>
+            <tr>
+                <th>Vote3</th>
+                <td>{{ sock.vote3 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sock_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('sock_edit', { 'id': sock.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,3 @@
+sock:
+    resource: "@sockBundle/Resources/config/routing.yml"
+    prefix:   /

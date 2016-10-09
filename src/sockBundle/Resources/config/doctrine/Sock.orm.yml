@@ -1,0 +1,31 @@
+sockBundle\Entity\Sock:
+    type: entity
+    table: null
+    repositoryClass: sockBundle\Repository\SockRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '100'
+            unique: true
+        picture:
+            type: string
+            length: 255
+        vote1:
+            type: string
+            length: 255
+            nullable: true
+        vote2:
+            type: string
+            length: 255
+            nullable: true
+        vote3:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }

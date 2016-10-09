@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <input type="hidden" value="{{ voteUrl }}" id="voteUrl"/>
+    <div class="container-fluid">
+        <div class="row">
+            <h1>
+            <div class="col-md-5">
+                Votre nom : <input type="text" name="name" value="">
+            </div>
+            <div class="col-md-1">
+                Vote :
+            </div>
+            <div class="col-md-1 vote-number">
+                <span id="vote-number">0</span>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-primary" id="go-vote">Voter</button>
+            </div>
+            </h1>
+        </div>
+        {% for sock in socks %}
+            {% if loop.index == 1 or loop.index == 4 or loop.index == 7 %}
+                <div class="row">
+            {% endif %}
+            <div class="col-md-4">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object"
+                                 src="{{ upload_directory }}/{{ sock.picture }}"
+                                 alt="{{ sock.picture }}"
+                            />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% if loop.index == 3 or loop.index == 6 or loop.index == 9 %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                    {% if page > 1 %}
+                        <a href="{{ path('vote_index', {'page': page - 1}) }}">
+                            <button type="button" class="btn btn-default"><</button>
+                        </a>
+                    {% endif %}
+                    {% if page > 1 %}
+                        <a href="{{ path('vote_index', {'page': 1}) }}">
+                            <button type="button" class="btn btn-default"><<</button>
+                        </a>
+                    {% endif %}
+                    {% if page < maxPage %}
+                        <a href="{{ path('vote_index', {'page': maxPage }) }}">
+                            <button type="button" class="btn btn-default">>></button>
+                        </a>
+                    {% endif %}
+                    {% if page < maxPage %}
+                        <a href="{{ path('vote_index', {'page': page + 1}) }}">
+                            <button type="button" class="btn btn-default">></button>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

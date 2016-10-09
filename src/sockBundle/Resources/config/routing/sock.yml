@@ -1,0 +1,39 @@
+sock_index:
+    path:     /{page}
+    defaults: { _controller: "sockBundle:Sock:index", page: 1 }
+    requirements:
+        page: \d+
+    methods:  GET
+
+sock_show:
+    path:     /{id}/show
+    defaults: { _controller: "sockBundle:Sock:show" }
+    methods:  GET
+
+sock_new:
+    path:     /new
+    defaults: { _controller: "sockBundle:Sock:new" }
+    methods:  [GET, POST]
+
+sock_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "sockBundle:Sock:edit" }
+    methods:  [GET, POST]
+
+sock_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "sockBundle:Sock:delete" }
+    methods:  DELETE
+
+vote_index:
+    path:     /vote/{page}
+    defaults: { _controller: "sockBundle:Vote:index", page: 1 }
+    requirements:
+        page: \d+
+    methods:  GET
+
+vote_vote:
+    path:     /vote/vote
+    defaults: { _controller: "sockBundle:Vote:vote"}
+    condition: "request.isXmlHttpRequest()"
+    methods:  POST
