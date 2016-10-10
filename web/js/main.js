@@ -8,11 +8,17 @@ $(function() {
     $("#go-vote").prop("disabled", true);
 
     $(".media-object").mouseenter(function(){
-        $(this).addClass('border-over');
+        if (!$(this).hasClass("border-fixe")) {
+            $(this).removeClass('padding2');
+            $(this).addClass('border-over');
+        }
     });
 
     $(".media-object").mouseleave(function(){
-        $(this).removeClass('border-over');
+        if (!$(this).hasClass("border-fixe")) {
+            $(this).removeClass('border-over');
+            $(this).addClass('padding2');
+        }
     });
 
     $(".media-object").click(function(){
@@ -20,10 +26,13 @@ $(function() {
         if ($(this).hasClass("border-fixe")){
             totalVote--;
             $(this).removeClass("border-fixe");
+            $(this).addClass('padding2');
         } else {
             if (totalVote < 3) {
                 totalVote++;
                 $(this).addClass("border-fixe");
+                $(this).removeClass('border-over');
+                $(this).removeClass('padding2');
             }
         }
         $("#vote-number").text(totalVote)

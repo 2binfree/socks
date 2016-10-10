@@ -1,7 +1,11 @@
 .border-over {
-    border: dashed #0000F0 medium;
+    border: 2px dotted #0000F0;
 }
 
 .border-fixe {
-    border: solid #0000F0 medium;
+    border: 2px solid #0000F0;
+}
+
+.padding2 {
+    padding: 2px;
 }
