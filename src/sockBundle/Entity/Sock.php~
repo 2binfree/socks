@@ -168,4 +168,3 @@ class Sock
         return $this->vote3;
     }
 }
-

@@ -25,7 +25,7 @@ class VoteController extends Controller
         $socks = $em->getRepository('sockBundle:Sock')->getByPage($page, self::MAX_PER_PAGE);
 
         $total = count($socks);
-        $maxPage = (int)($total / SockRepository::MAX_RESULT);
+        $maxPage = round(($total / SockRepository::MAX_RESULT) + 0.5);
         return $this->render('vote/index.html.twig', array(
             'maxPage'       => $maxPage,
             'socks'         => $socks,
