@@ -1,4 +1,4 @@
 services:
-#    sock.example:
-#        class: sockBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    sock.user_generator:
+        class:        sockBundle\Services\UserGenerator
+        arguments:    [@service_container, 50]
