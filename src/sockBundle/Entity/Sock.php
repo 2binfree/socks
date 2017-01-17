@@ -17,10 +17,6 @@ class Sock
      */
     private $name;
 
-    /**
-     * @var string
-     */
-    private $picture;
 
     /**
      * @var string
@@ -36,6 +32,11 @@ class Sock
      * @var string
      */
     private $vote3;
+
+    /**
+     * @var array
+     */
+    private $pictures;
 
 
     /**
@@ -72,29 +73,6 @@ class Sock
         return $this->name;
     }
 
-    /**
-     * Set picture
-     *
-     * @param string $picture
-     *
-     * @return Sock
-     */
-    public function setPicture($picture)
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    /**
-     * Get picture
-     *
-     * @return string
-     */
-    public function getPicture()
-    {
-        return $this->picture;
-    }
 
     /**
      * Set vote1
@@ -126,6 +104,12 @@ class Sock
      * @param string $vote2
      *
      * @return Sock
+
+
+
+
+
+
      */
     public function setVote2($vote2)
     {
@@ -166,5 +150,29 @@ class Sock
     public function getVote3()
     {
         return $this->vote3;
+    }
+
+    /**
+     * Set pictures
+     *
+     * @param array $pictures
+     *
+     * @return Sock
+     */
+    public function setPictures($pictures)
+    {
+        $this->pictures = $pictures;
+
+        return $this;
+    }
+
+    /**
+     * Get pictures
+     *
+     * @return array
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
     }
 }

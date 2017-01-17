@@ -1,4 +1,9 @@
 services:
     sock.user_generator:
         class:        sockBundle\Services\UserGenerator
-        arguments:    [@service_container, 50]
+        arguments:    ["@service_container", 50]
+
+    sock.file_type_extension:
+        class: sockBundle\Form\Extension\FileTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FileType }

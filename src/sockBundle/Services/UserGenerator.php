@@ -29,6 +29,9 @@ class UserGenerator
         $this->container = $container;
     }
 
+    /**
+     * @return array
+     */
     public function getUsers()
     {
         $ch = curl_init();

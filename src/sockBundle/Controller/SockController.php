@@ -3,11 +3,13 @@
 namespace sockBundle\Controller;
 
 use sockBundle\Repository\SockRepository;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use sockBundle\Entity\Sock;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * Sock controller.
@@ -48,13 +50,17 @@ class SockController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $file = $sock->getPicture();
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move(
-                $this->getParameter('upload_directory'),
-                $fileName
-            );
-            $sock->setPicture($fileName);
+            $files = $sock->getPictures();
+            $filenames = array();
+            foreach($files as $file) {
+                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+                $file->move(
+                    $this->getParameter('upload_directory'),
+                    $fileName
+                );
+                $filenames[] = $fileName;
+            }
+            $sock->setPictures($filenames);
             $em = $this->getDoctrine()->getManager();
             $em->persist($sock);
             $em->flush();

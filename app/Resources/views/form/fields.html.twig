@@ -1,0 +1,14 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block file_widget %}
+    {% spaceless %}
+
+        {{ block('form_widget') }}
+        {% if file_url is not null %}
+            {% for file in file_url %}
+                <img src="{{ asset(file) }}"/>
+            {% endfor %}
+        {% endif %}
+
+    {% endspaceless %}
+{% endblock %}

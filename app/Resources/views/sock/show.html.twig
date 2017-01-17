@@ -14,9 +14,11 @@
                 <td>{{ sock.name }}</td>
             </tr>
             <tr>
-                <th>Picture</th>
+                <th>Pictures</th>
                 <td>
-                    <img src="{{ upload_directory }}/{{ sock.picture }}" />
+                    {% for picture in sock.pictures %}
+                        <img src="{{ upload_directory }}/{{ picture }}" />
+                    {% endfor %}
                 </td>
             </tr>
             <tr>

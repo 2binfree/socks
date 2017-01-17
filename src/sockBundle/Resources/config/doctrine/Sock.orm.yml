@@ -13,9 +13,8 @@ sockBundle\Entity\Sock:
             type: string
             length: '100'
             unique: true
-        picture:
-            type: string
-            length: 255
+        pictures:
+            type: array
         vote1:
             type: string
             length: 255

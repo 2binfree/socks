@@ -18,7 +18,11 @@
                     <a href="{{ path('sock_show', { 'id': sock.id }) }}">{{ sock.id }}</a>
                 </div>
                 <div class="col-md-2">{{ sock.name }}</div>
-                <div class="col-md-5">{{ sock.picture }}</div>
+                <div class="col-md-5">
+                    {% for picture in sock.pictures %}
+                        {{ picture }}
+                    {% endfor %}
+                </div>
                 <div class="col-md-1">{{ sock.vote1 }}</div>
                 <div class="col-md-1">{{ sock.vote2 }}</div>
                 <div class="col-md-1">{{ sock.vote3 }}</div>

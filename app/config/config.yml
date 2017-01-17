@@ -37,6 +37,8 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         upload_directory: /%upload_directory%
+    form_themes:
+        - 'form/fields.html.twig'
 
 # Doctrine Configuration
 doctrine:

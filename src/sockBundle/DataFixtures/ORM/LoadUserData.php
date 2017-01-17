@@ -31,18 +31,22 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
     public function load(ObjectManager $manager)
     {
         $users = $this->container->get('sock.user_generator')->getUsers();
+        $cpt = 0;
         foreach ($users as $user){
-            $userEntity = new User;
+            $cpt++;
+            $userEntity = new User();
             $userEntity->setFirstname($user->name->first);
             $userEntity->setLastname($user->name->last);
             $userEntity->setEmail($user->email);
             $userEntity->setCountry($user->nat);
             $manager->persist($userEntity);
             unset($userEntity);
+            if ($cpt % 10 == 0){
+                $manager->flush();
+            }
         }
         $manager->flush();
     }
-
     /**
      * Get the order of this fixture
      *
